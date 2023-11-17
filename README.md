@@ -3,7 +3,7 @@
 
 ## :link: <b>You can find me at:</b>
 - ⚡ Blog : https://www.o-om.com
-- ⚡ Facebook : https://fb.me/buananet.pbun
+- ⚡ Facebook : https://fb.me/Linket Web
 - ⚡ Twitter : https://twitter.com/oomdotcom
 - ⚡ Instagram : https://instagram.com/buananet_mikrotik
 - ⚡ linkedin : https://linkedin.com/in/agus-ramadhani
