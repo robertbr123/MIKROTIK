@@ -22,7 +22,7 @@ This script demonstrates one method of doing automatic failover using the Netwat
 
 The situation:
 
-You have 2 lines going out to the internet - 10.0.0.12 and 10.0.0.13. You have setup a mangle to mark HTTP traffic (optional) and want to route http along the 2 lines using load balancing.
+You have 2 lines going out to the internet - 10.0.0.12 and 10.0.0.13. You have setup a mangle to mark HTTP traffic (opcional) and want to route http along the 2 lines using load balancing.
 
 You setup the mangle:
 
@@ -67,11 +67,11 @@ add name="ecmp-startup" source=":if ([/ping 1.1.1.12 count=1]=1 && \
 [/ping 1.1.1.13 count=1]=1 && [/ip route get [find \
 comment=\"ECMP Route For HTTP\"] disabled]=true) do={ :log info \"Both gateways up\" \
 /ip route set [find routing-mark=ecmp-http-route] \
-disabled=no}" policy=ftp,reboot,read,write,policy,test,winbox,password 
+disabled=no}" policy=ftp,reboot,read,write,policy,test,winbox,senha 
 add name="ecmp-shutdown" source=":if ([/ping 1.1.1.12 count=1]=1 && \
 [/ping 1.1.1.13 count=1]=0) do={ :log info \"Gateway down\"\
 /ip route set [find routing-mark=ecmp-http-route] \
-disabled=yes}" policy=ftp,reboot,read,write,policy,test,winbox,password
+disabled=yes}" policy=ftp,reboot,read,write,policy,test,winbox,senha
 Hi I found this error while trying to use this script, what worked for me was
 ecmp start/shut script. Looks like  in the start and shut script (") are missing
 from the find, well other the script works wonders for me. Thanks a lot savagedavid

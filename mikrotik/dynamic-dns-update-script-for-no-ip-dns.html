@@ -31,7 +31,7 @@ The following permissions are required for this script to run:
 - test
 - read
 
-2. Paste the source code that appears below. Edit the user, password, hostname and interface info to match your setup.
+2. Paste the source code that appears below. Edit the user, senha, hostname and interface info to match your setup.
 
 <code class="routeros"># No-IP automatic Dynamic DNS update
 #--------------- Change Values in this section to match your setup ------------------
@@ -90,7 +90,7 @@ Can be modified for use with other Dynamic DNS services supported ReST API.
 
 <code class="routeros">##############Script Settings##################
 :local NOIPUser "no-ip.com LOGIN"
-:local NOIPPass "no-ip.com PASSWORD"
+:local NOIPPass "no-ip.com senha"
 :local WANInter "MikroTik Router WAN Interface Name"
 ###############################################
 :local NOIPDomain "$NOIPUser.no-ip.org"
@@ -106,7 +106,7 @@ Can be modified for use with other Dynamic DNS services supported ReST API.
 }</code>
 Note:
 
-:local NOIPDomain "$NOIPUser.no-ip.org" - True if the username is the third level domain and is registered in the domain *. no-ip.org(example: username=testuser1 and domain=testuser1.no-ip.org). In another case, the string to be changed.
+:local NOIPDomain "$NOIPUser.no-ip.org" - True if the usuario is the third level domain and is registered in the domain *. no-ip.org(example: usuario=testuser1 and domain=testuser1.no-ip.org). In another case, the string to be changed.
 
 The symbol "\3F" is used to replace the shielded symbol "?" in the URL.
 
@@ -116,7 +116,7 @@ Sample configuration:
 
 <code class="routeros">##############Script Settings##################
 :local NOIPUser "testuser1"
-:local NOIPPass "testpassword"
+:local NOIPPass "testsenha"
 :local WANInter "ether1"
 ###############################################</code>
 If you use another WAN-interface, use it(example: pppoe-out1, pptp-out1, l2tp-out1).

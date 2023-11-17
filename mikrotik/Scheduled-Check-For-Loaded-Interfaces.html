@@ -26,7 +26,7 @@ This script can check out-interface (for $sent-bits-per-second/$received-bits-pe
 <code class="routeros">/system script 
 add name="tl_down" source="/interface monitor-traffic [/interface find name "interface"] once do { 
 :if ($received-bits-per-second > 1048576) do { 
-/queue simple add name=(username . "_" . [:pick [/system clock get date] 4 6] . "-" . [:pick [/system clock get date] 0 3]  \
+/queue simple add name=(usuario . "_" . [:pick [/system clock get date] 4 6] . "-" . [:pick [/system clock get date] 0 3]  \
 . "-" . [:pick [/system clock get date] 7 11] . "-" . [:pick [/system clock get time] 0 9]) limit-at=262144/262144 \
 max-limit=262144/262144 target-addresses="ip address" priority=1
 :log warning "Traffic limit added for ip address/network/interface"

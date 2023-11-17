@@ -26,7 +26,7 @@ It is extremely useful for debugging wireless problems, like intermittent noise,
 
 New Version that works with v5/v6, first line should be the next device closest to your main router. It reports ping stats, you can use the results to create latency charts between network devices, useful for detecting network problems.
 
-<code class="routeros">/system script add name=CombStats policy=ftp,reboot,read,write,policy,test,winbox,password,sniff,sensitive,api source="
+<code class="routeros">/system script add name=CombStats policy=ftp,reboot,read,write,policy,test,winbox,senha,sniff,sensitive,api source="
    :local Dependent XXX.XXX.XXX.XXX;\r\
    :local i;\r\
    :local MM [:tonum [:pick [/sys clo get time] 3 5]];\r\

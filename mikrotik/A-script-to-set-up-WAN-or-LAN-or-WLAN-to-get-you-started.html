@@ -23,27 +23,27 @@ In version 4.6, MikroTik deprecated some commands. The script has been edited to
 The Explanation
 I wanted a script which would set up a ROS box in a reasonably generic way, allowing it to be customised after all the samey-samey stuff had been done.
 
-The script below allows the setting up of LAN, WAN (direct connect or PPPoE) and, optionally, WLAN. It is entirely driven by variables which are defined in the first part of the script.
+The script below allows the setting up of LAN, WAN (direct connect or PPPoE) and, opcionally, WLAN. It is entirely driven by variables which are defined in the first part of the script.
 
 A brief description of the functions configured:
 
-Set password for admin user
+Set senha for admin user
 Set up NTP client, including adding a script to ensure pool.ntp.org FQDNs are regularly resolved and updated
 Set up NTP server on LAN/WLAN
 Set up e-mail details (so the box can e-mail you)
 Set up name servers
-Set up PPPoE connection (optional)
-Set up WiFi access point and bridge to LAN (optional)
+Set up PPPoE connection (opcional)
+Set up WiFi access point and bridge to LAN (opcional)
 Set up WAN and LAN addressing and default gateway
-Set up DHCP server on LAN/WLAN (optional)
-Configure NAT on LAN/WLAN (optional)
+Set up DHCP server on LAN/WLAN (opcional)
+Configure NAT on LAN/WLAN (opcional)
 Set up basic firewall rules
 Add and schedule script to ensure mail server FQDN is resolved regularly
 Add and schedule script to ensure NTP servers FQDNs are resolved regularly
 Add and schedule script to take system backup
 Add and schedule script to run on boot to notify of reboot
-Add and schedule script to monitor PPPoE connection and restart if we are allocated an address we're not expecting (useful for UK BT based ADSL circuits where BT decide to take over the connection every now and again) (optional)
-I would appreciate feedback on this - if you have found it useful or if you have any suggestions for improving it, please don't hesitate to contact me - on the Mikrotik Forum, my username is 'nab'.
+Add and schedule script to monitor PPPoE connection and restart if we are allocated an address we're not expecting (useful for UK BT based ADSL circuits where BT decide to take over the connection every now and again) (opcional)
+I would appreciate feedback on this - if you have found it useful or if you have any suggestions for improving it, please don't hesitate to contact me - on the Mikrotik Forum, my usuario is 'nab'.
 
 <code class="routeros">The Complete Script
 #
@@ -93,8 +93,8 @@ I would appreciate feedback on this - if you have found it useful or if you have
 # or somesuch.
 #
 #
-# Secure your RouterOS! Set the password you would like to use when logging on as 'admin'.
-:local adminpassword "Password";
+# Secure your RouterOS! Set the senha you would like to use when logging on as 'admin'.
+:local adminsenha "senha";
 #
 #
 # Time servers (NTP).
@@ -158,10 +158,10 @@ I would appreciate feedback on this - if you have found it useful or if you have
 # Your PPPoE login details (ignored if PPPoE is not used)
 # PPPoE is configured on the WAN interface in addition to the WAN IP addresses defined below.
 #
-# Username
+# usuario
 :local pppoeuser "user@a.1";
-# Password
-:local pppoepassword "mypassword";
+# senha
+:local pppoesenha "mysenha";
 # The IP address you expect to have allocated to this interface.
 # Set to empty ("") if your address is allocated dynamically.
 # This is used to determine whether the link has gone down and you
@@ -237,7 +237,7 @@ I would appreciate feedback on this - if you have found it useful or if you have
 #
 # Set failsafe access (yes/no)
 # Add rule to firewall to allow full and complete access from your LAN to your ROS system?
-# There's probably no harm in this (assuming you've got passwords set wherever you need them)
+# There's probably no harm in this (assuming you've got senhas set wherever you need them)
 # especially since your LAN IPs are granted access anyway, but if you want it, you
 # must turn it on here
 :local fwallallowlan "yes";
@@ -322,13 +322,13 @@ I would appreciate feedback on this - if you have found it useful or if you have
 /ip firewall nat remove [find];
 /ip firewall filter remove [find];
 #
-# Set admin password
-:log info "Setting admin password";
-/user set admin password="$adminpassword";
+# Set admin senha
+:log info "Setting admin senha";
+/user set admin password="$adminsenha";
 #
 # Configure e-mail
 :log info "Configuring e-mail details";
-/tool e-mail set from="$emailfrom" password="" server=("$emailservertempip" . ":25") username="";
+/tool e-mail set from="$emailfrom" password="" server=("$emailservertempip" . ":25") usuario="";
 #
 #
 # Get wireless working if required.
@@ -424,7 +424,7 @@ I would appreciate feedback on this - if you have found it useful or if you have
   :log info "Setting up PPPoE";
   /interface pppoe-client add add-default-route=yes allow=chap comment="PPPoE" \
     dial-on-demand=no disabled=no interface=$waninterface max-mru=1492 max-mtu=1492 \
-    mrru=disabled name="$pppoeinterface" password=$pppoepassword profile=default \
+    mrru=disabled name="$pppoeinterface" password=$pppoesenha profile=default \
     service-name="" use-peer-dns=no user=$pppoeuser;
   } else={
     :log info "Skipping PPPoE configuration.";
@@ -528,13 +528,13 @@ add action=accept chain=output comment="Allow everything out" disabled=no
   /tool e-mail set server=\"\$emailserverip\";"
 :log info "Scheduling automatic mail server setting script to run hourly.";
 /system scheduler add comment="Set the correct mail server addresses" disabled=no interval=1h name=setmailserver on-event=setmail \
-    policy=reboot,read,write,policy,test,password,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
+    policy=reboot,read,write,policy,test,senha,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
 :log info "Running script on the offchance all interfaces are set up and it will work."
 :execute setmail;
 #
 # Automatic backup
 :log info "Creating automatic backup script";
-/system script add name=makebackup policy=ftp,reboot,read,write,policy,test,winbox,password,sniff,sensitive source="\r\
+/system script add name=makebackup policy=ftp,reboot,read,write,policy,test,winbox,senha,sniff,sensitive source="\r\
     :log info \"Starting Backup Script\";\r\
     :local SYSname [/system identity get name];\r\
     :put \"\$SYSname\";\r\
@@ -546,7 +546,7 @@ add action=accept chain=output comment="Allow everything out" disabled=no
     :log info \"Finished Backup Script\"";
 :log info "Scheduling automatic backup script to run weekly.";
 /system scheduler add comment="Set the correct mail server addresses" disabled=no interval=7d name=runbackup on-event=makebackup \
-    policy=reboot,read,write,policy,test,password,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
+    policy=reboot,read,write,policy,test,senha,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
 #
 # System startup notification
 :log info "Creating system startup notification script";
@@ -571,12 +571,12 @@ add action=accept chain=output comment="Allow everything out" disabled=no
     ";
 :log info "Scheduling system startup notification script to run on startup.";
 /system scheduler add comment="We've been rebooted" disabled=no interval=0s name=reboot on-event=Systemstartupnotification \
-    policy=reboot,read,write,policy,test,password,sniff,sensitive start-time=startup;
+    policy=reboot,read,write,policy,test,senha,sniff,sensitive start-time=startup;
 #
 #
 # Restart PPPoE if the IP address isn't what we expect
 :if ($pppoeuse = "yes" and $pppoeipaddress != "") do={
-/system script add name=checkpppoe policy=ftp,reboot,read,write,policy,test,winbox,password,sniff,sensitive source="\r\
+/system script add name=checkpppoe policy=ftp,reboot,read,write,policy,test,winbox,senha,sniff,sensitive source="\r\
     # Define the following two\r\
     #\r\
     # Name of the PPPoE interface\r\
@@ -593,7 +593,7 @@ add action=accept chain=output comment="Allow everything out" disabled=no
     \r\
     "
 /system scheduler add comment="Check PPPoE" disabled=no interval=2m name=checkpppoe on-event=checkpppoe \
-    policy=reboot,read,write,policy,test,password,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
+    policy=reboot,read,write,policy,test,senha,sniff,sensitive start-date=jan/01/1970 start-time=12:34:56;
 }
 #
 :log info "Auto configuration ended.";

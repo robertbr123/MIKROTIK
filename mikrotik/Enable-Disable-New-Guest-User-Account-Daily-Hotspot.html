@@ -16,14 +16,14 @@
 <body>
 <div id="hidelink"></div>
 <h1>Enable or Disable New Guest User Account Daily Hotspot - MikroTik Script RouterOS</h1>
-<pre>We have hotspot gateways at different locations. Each uses radius authentication, for employees, on our Active Directory(AD) domain. To prevent abuse of the access by guests, we wanted them to have to login as well. Rather than creating a single or even a handful of guest accounts, I wanted to have a new one for each day. This should provide for better security by using 366 different combinations. Also, depending on the size of your password it would take a considerable amount of time to "guess" the correct password for that day. In addition, if I were to use an AD account, I would have to manually enable/disable the accounts daily, which is definitely something to avoid.
+<pre>We have hotspot gateways at different locations. Each uses radius authentication, for employees, on our Active Directory(AD) domain. To prevent abuse of the access by guests, we wanted them to have to login as well. Rather than creating a single or even a handful of guest accounts, I wanted to have a new one for each day. This should provide for better security by using 366 different combinations. Also, depending on the size of your senha it would take a considerable amount of time to "guess" the correct senha for that day. In addition, if I were to use an AD account, I would have to manually enable/disable the accounts daily, which is definitely something to avoid.
 
-I have 366 hotspot user accounts created. Each is named guestX where X is the day of year. As in guest1 for the guest account for January 1st. Each account has a different password.
+I have 366 hotspot user accounts created. Each is named guestX where X is the day of year. As in guest1 for the guest account for January 1st. Each account has a different senha.
 
 - The Disable script is scheduled to run at 23:58 everyday to disable the last 5 days guest accounts. I do 5 days just in case there were some sort of power failure and the script hasn't run for some time.
 - The Enable script runs at 00:01 everyday to enable that day's guest account.
-- The Autoit script creates a text file with all the guest accounts with random passwords ready to paste onto the command line. Autoit is a free scripting language for windows that will do most anything. Autoit Homepage
-- The last piece is up to you, which is how to distribute the usernames/passwords. We have a page on our sharepoint server that will give you that day's username/password.
+- The Autoit script creates a text file with all the guest accounts with random senhas ready to paste onto the command line. Autoit is a free scripting language for windows that will do most anything. Autoit Homepage
+- The last piece is up to you, which is how to distribute the usuarios/senhas. We have a page on our sharepoint server that will give you that day's usuario/senha.
 
 All scripts were written and run on 2.9.51 systems.
 
@@ -110,7 +110,7 @@ Enable Script
 /ip hotspot user enable ("guest" . $dayof)</code>
 Autoit Script
 
-<code class="routeros">;generate usernames and passwords for hotspot.
+<code class="routeros">;generate usuarios and senhas for hotspot.
 $file = FileOpen(@ScriptDir & "\users.txt", 1)
 ; Check if file opened for writing OK
 If $file = -1 Then

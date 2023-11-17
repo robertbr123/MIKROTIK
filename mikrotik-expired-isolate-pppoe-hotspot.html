@@ -185,21 +185,21 @@
                   <b>/ip firewall nat</b><br>
                   add chain=dstnat src-address-list=EXPIRED  protocol=tcp dst-port=80,443 action=redirect to-ports=<span style="color:#ff6600; font-weight:bold" id="result-nat-port">8082</span> comment="Expired by Linket.com.br"<br>
                   <b>/ppp profile</b><br>
-                  add comment="Expired by Linket.com.br" local-address=<span style="color:#ff6600; font-weight:bold" id="result-ppp-profile">10.20.20.1</span> name=EXPIRED on-down=":local username \$\"user\";\r\
-                  \n/ip proxy access remove [find comment=\"ppp-\$username\"];\r\
-                  \n/ip firewall address-list remove [find comment=\"ppp-\$username\"];" on-up=":local username \$\"user\";\r\
+                  add comment="Expired by Linket.com.br" local-address=<span style="color:#ff6600; font-weight:bold" id="result-ppp-profile">10.20.20.1</span> name=EXPIRED on-down=":local usuario \$\"user\";\r\
+                  \n/ip proxy access remove [find comment=\"ppp-\$usuario\"];\r\
+                  \n/ip firewall address-list remove [find comment=\"ppp-\$usuario\"];" on-up=":local usuario \$\"user\";\r\
                   \n:local address \$\"remote-address\";\r\
-                  \n/ip proxy access add action=deny src-address=\$address comment=\"ppp-\$username\";\r\
-                  \n/ip firewall address-list add list=EXPIRED address=\$address comment=\"ppp-\$username\"" remote-address=EXPIRED
+                  \n/ip proxy access add action=deny src-address=\$address comment=\"ppp-\$usuario\";\r\
+                  \n/ip firewall address-list add list=EXPIRED address=\$address comment=\"ppp-\$usuario\"" remote-address=EXPIRED
                   <br>
                   <b>/ip hotspot user profile</b><br>
-                  add add-mac-cookie=no address-pool=EXPIRED !mac-cookie-timeout name=EXPIRED on-login=":local username \$\"user\";\r\
+                  add add-mac-cookie=no address-pool=EXPIRED !mac-cookie-timeout name=EXPIRED on-login=":local usuario \$\"user\";\r\
                   \n:local ipaddress \$\"address\";\r\
-                  \n/ip proxy access add action=deny src-address=\$ipaddress comment=\"hs-\$username\";\r\
-                  \n/ip firewall address-list add list=EXPIRED address=\$address comment=\"hs-\$username\"" on-logout=":local username \$user;\r\
-                  \n/ip hotspot cookie remove [find user=\$username]\r\
-                  \n/ip proxy access remove [find comment=\"hs-\$username\"]\r\
-                  \n/ip firewall address-list remove [find comment=\"hs-\$username\"];" shared-users=100<br>
+                  \n/ip proxy access add action=deny src-address=\$ipaddress comment=\"hs-\$usuario\";\r\
+                  \n/ip firewall address-list add list=EXPIRED address=\$address comment=\"hs-\$usuario\"" on-logout=":local usuario \$user;\r\
+                  \n/ip hotspot cookie remove [find user=\$usuario]\r\
+                  \n/ip proxy access remove [find comment=\"hs-\$usuario\"]\r\
+                  \n/ip firewall address-list remove [find comment=\"hs-\$usuario\"];" shared-users=100<br>
                   <b>/ip hotspot walled-garden ip</b><br>
                   add action=accept disabled=no !dst-address !dst-address-list dst-port=<span style="color:#ff6600; font-weight:bold" id="result-wallet-garden-port">8082</span> protocol=tcp !src-address !src-address-list comment="Expired by Linket.com.br"<br>
             </div>

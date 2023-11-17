@@ -20,8 +20,8 @@
 
 Script minimum Policy permissions required: read | write | test
 
-<code class="routeros">:local username "<dyn.com user name>"
-:local password "<dyn.com password or, better, Updater Client Key>"
+<code class="routeros">:local usuario "<dyn.com user name>"
+:local senha "<dyn.com senha or, better, Updater Client Key>"
 :local hostname "<dyn.com host name>"
 :local emailAddress "<where to send notifications>"
 
@@ -35,8 +35,8 @@ Script minimum Policy permissions required: read | write | test
 :log info ("UpdateDynDNS starts.")
 
 # print some debug info
-#:log info ("UpdateDynDNS: username = $username")
-#:log info ("UpdateDynDNS: password = $password")
+#:log info ("UpdateDynDNS: usuario = $usuario")
+#:log info ("UpdateDynDNS: senha = $senha")
 #:log info ("UpdateDynDNS: hostname = $hostname")
 #:log info ("UpdateDynDNS: previousIP = $previousIP")
 
@@ -77,11 +77,11 @@ Script minimum Policy permissions required: read | write | test
 :if (($currentIP != $previousIP) || ($dyndnsForce = true)) do={
    :log info ("Changing IP from $previousIP to $currentIP.")
    :set dyndnsForce false
-   :set url "http://$username:$password@members.dyndns.org/nic/update?hostname=$hostname&myip=$currentIP&wildcard=no"
+   :set url "http://$usuario:$senha@members.dyndns.org/nic/update?hostname=$hostname&myip=$currentIP&wildcard=no"
    /tool fetch url=$url mode=http dst-path="/dyndns.txt"
   
 # Original code:
-#   /tool fetch user=$username password=$password mode=http address="members.dyndns.org" \
+#   /tool fetch user=$usuario password=$senha mode=http address="members.dyndns.org" \
 #      src-path="nic/update?system=dyndns&hostname=$hostname&myip=$currentIP&wildcard=no" \
 #      dst-path="/dyndns.txt"
 

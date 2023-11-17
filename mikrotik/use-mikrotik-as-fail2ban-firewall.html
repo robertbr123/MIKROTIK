@@ -18,7 +18,7 @@
 <h1>Use Mikrotik as Fail2ban firewall - MikroTik Script RouterOS</h1>
 <pre>
 The Explanation
-This tutorial is about how to configure Fail2ban to use Mikrotik as Firewall. Fail2ban is very halpfull application Its allows system administrators easily detect and prevent attack attempts. It's scaning log files (e.g. /var/log/auth.log) and bans IPs that show the malicious signs (too many password failures, seeking for exploits, etc..). By default Fail2ban using IPTables as firewall software but today I will show you how to configure system to put all firewall rules in one place.
+This tutorial is about how to configure Fail2ban to use Mikrotik as Firewall. Fail2ban is very halpfull application Its allows system administrators easily detect and prevent attack attempts. It's scaning log files (e.g. /var/log/auth.log) and bans IPs that show the malicious signs (too many senha failures, seeking for exploits, etc..). By default Fail2ban using IPTables as firewall software but today I will show you how to configure system to put all firewall rules in one place.
 
 P.S Fail2Ban comes with filters for various services (apache, curier, ssh, postfix, asterisk, etc).
 
@@ -59,7 +59,7 @@ DO NOT WRITE ANY PASSPHRASE. Now we need to upload and import id_dsa.pub key to 
 Configuration on Mikrotik side
 
 <code class="routeros">[admin@mikrotik] > user add name=linux address=LINUX-SERVER-IP-ADDRESS group=full</code>
-This command will add a user without password with full permissions login allowed from only your linux machine.
+This command will add a user without senha with full permissions login allowed from only your linux machine.
 
 <code class="routeros">[admin@mikrotik]> user ssh-keys import public-key-file=id_dsa.pub user=linux</code>
 This command will import your uploaded id_dsa public key to key mikrotik store.

@@ -19,7 +19,7 @@
 <h1>Dynamic DNS Update Script for ChangeIP behind NAT - MikroTik Script RouterOS</h1>
 <pre>This script is intended to update a ChangeIP.com Dynamic DNS account when your device is behind nat.
 
-You need to set your username, password and hostname.
+You need to set your usuario, senha and hostname.
 
 This was tested successfully on RouterOS 5.7
 
@@ -55,7 +55,7 @@ You may copy and paste the script below into the terminal window.
 #
 /system script
 add name=DDNS policy=\
-    ftp,reboot,read,write,policy,test,winbox,password,sniff,sensitive,api \
+    ftp,reboot,read,write,policy,test,winbox,senha,sniff,sensitive,api \
     source="# Dynamic DNS for ChangeIP.com behind NA\
     T\r\
     # Modified by Jorge Amaral, officelan.pt\r\

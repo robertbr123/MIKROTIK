@@ -31,17 +31,17 @@ Make a scheduler entry to run this every X minutes, I'd recommend every 5-10 min
 :local downquota [$downquotamb * 1000]
 :local counter
 :local datadown
-:local username
+:local usuario
 :local macaddress
 :foreach counter in=[/ip hotspot active find ] do={
 :set datadown [/ip hotspot active get $counter bytes-out]
 :if ($datadown>$downquota) do={
-:set username [/ip hotspot active get $counter user]
+:set usuario [/ip hotspot active get $counter user]
 :set macaddress [/ip hotspot active get $counter mac-address]
-/ip hotspot user remove [/ip hotspot user find where name=$username]
-/ip hotspot user add name=$username limit-bytes-out=$downquota mac-address=$macaddress
+/ip hotspot user remove [/ip hotspot user find where name=$usuario]
+/ip hotspot user add name=$usuario limit-bytes-out=$downquota mac-address=$macaddress
 /ip hotspot active remove $counter
-:log info "Logged out $username - Reached download quota"
+:log info "Logged out $usuario - Reached download quota"
 }}</code>
 Script to clear all manually created user accounts; this can be done hourly, daily or weekly depending on your requirements.
 

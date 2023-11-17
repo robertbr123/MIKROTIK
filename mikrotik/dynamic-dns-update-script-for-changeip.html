@@ -17,7 +17,7 @@
 <div id="hidelink"></div>
 
 <h1>Dynamic DNS Update Script for ChangeIP.com - MikroTik Script RouterOS</h1><pre>
-The following script should be created when you wish to update your ChangeIP.com Dynamic DNS account. Once created you should schedule this to run once in a while. The :global variables should be edited to include your unique username and password, interface name, etc.
+The following script should be created when you wish to update your ChangeIP.com Dynamic DNS account. Once created you should schedule this to run once in a while. The :global variables should be edited to include your unique usuario and senha, interface name, etc.
 
 The script below is RouterOS 4.2 Tested! It should also continue to work under 3.x series RouterOS.
 
@@ -45,7 +45,7 @@ Note: A copy of the latest Dynamic DNS update script should be at ChangeIP.com.
 #                   %
 # CONFIGURATION FIELD DEFINITIONS:
 #  ddnsuser:  Enter your ChangeIP.com user id.
-#  ddnspass:  Enter your ChangeIP.com password.
+#  ddnspass:  Enter your ChangeIP.com senha.
 #  ddnshost:  Enter the hostname (www.example.com) to update.
 #  ddnsinterface:  Enter an interface name - case sensative.
 #                   %
@@ -60,7 +60,7 @@ Note: A copy of the latest Dynamic DNS update script should be at ChangeIP.com.
 # EDIT YOUR DETAILS / CONFIGURATION HERE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 :global ddnsuser "YourChangeIPUserID"
-:global ddnspass "PASSWORD"
+:global ddnspass "senha"
 :global ddnshost "MyRouterHostname.example.org"
 :global ddnsinterface "ether1"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,7 +103,7 @@ You may copy and paste the script below into the terminal window to import a scr
 /system script
 
 add name=HomingBeacon-Simple policy=\
-    ftp,reboot,read,write,policy,test,winbox,password source="# Dynamic DNS Up\
+    ftp,reboot,read,write,policy,test,winbox,senha source="# Dynamic DNS Up\
     date / Simple Edition\r\
     # Written by Sam Norris, ChangeIP.com\r\
     # Copyright ChangeIP.com 2009\r\
@@ -124,7 +124,7 @@ add name=HomingBeacon-Simple policy=\
     #                   %\r\
     # CONFIGURATION FIELD DEFINITIONS:\r\
     #  ddnsuser:  Enter your ChangeIP.com user id.\r\
-    #  ddnspass:  Enter your ChangeIP.com password.\r\
+    #  ddnspass:  Enter your ChangeIP.com senha.\r\
     #  ddnshost:  Enter the hostname (www.example.com) to update.\r\
     #  ddnsinterface:  Enter a list of interface names - case sensative.\r\
     #                   %\r\
@@ -139,7 +139,7 @@ add name=HomingBeacon-Simple policy=\
     # EDIT YOUR DETAILS / CONFIGURATION HERE\r\
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\
     :global ddnsuser \"YourChangeIPUserID\"\r\
-    :global ddnspass \"PASSWORD\"\r\
+    :global ddnspass \"senha\"\r\
     :global ddnshost \"MyRouterHostname.example.org\"\r\
     :global ddnsinterface \"ether1\"\r\
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\
@@ -183,7 +183,7 @@ add name=HomingBeacon-Simple policy=\
 
 /system scheduler
 add comment="" disabled=no interval=5m name=DDNS on-event=\
-    HomingBeacon-Simple policy=read,write,policy,test,password start-time=\
+    HomingBeacon-Simple policy=read,write,policy,test,senha start-time=\
     startup</code>
 
 
@@ -194,7 +194,7 @@ An updated script here (01/20/08) should allow auto-detection of the default gat
 
 <code class="routeros"># Define User Variables
 :global ddnsuser "CHANGEIPUSERID"
-:global ddnspass "CHANGEIPPASSWORD"
+:global ddnspass "CHANGEIPsenha"
 :global ddnshost "FREEHOSTNAME.TOUPDATE.TLD"
 
 # Define Global Variables
@@ -245,7 +245,7 @@ If errors or problems occur with the above scripts please check to see if we are
 <code class="routeros">:log info "DDNS: Begin"
 
 :global ddns-user "YOURUSERID"
-:global ddns-pass "YOURPASSWORD"
+:global ddns-pass "YOURsenha"
 :global ddns-host "*1"
 :global ddns-interface "EXACTINTERFACENAME"
 
@@ -278,10 +278,10 @@ For those of you that like to use the CLI, and want to make sure you get a very 
 
 /system script
 add name=HomingBeaconDynamicDNSUpdater policy=\
-    ftp,reboot,read,write,policy,test,winbox,password,sniff \
+    ftp,reboot,read,write,policy,test,winbox,senha,sniff \
     source="# Define User Variables\r\
     :global ddnsuser \"CHANGEIPUSERID\"\r\
-    :global ddnspass \"CHANGEIPPASSWORD\"\r\
+    :global ddnspass \"CHANGEIPsenha\"\r\
     :global ddnshost \"FREEHOSTNAME.TOUPDATE.TLD\"\r\
     \r\
     # Define Global Variables\r\

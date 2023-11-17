@@ -24,8 +24,8 @@ WMS stands for "Wifi Managed Service", which is a special wifi internet service 
 :local nolock true;
 :local gurl "https://welcome2.wifi.id";
 :local guxx "http://www.msftconnecttest.com/redirect";
-:local username "";
-:local password "";
+:local usuario "";
+:local senha "";
 :local int "WMS2";
 :local gwp "WAG-D1-PBR";
 :local mdlan "GPON00-D1-TAK-3BSR%20pon%201/3/22/1:4090:TPNS01@WIFI.ID";
@@ -46,13 +46,13 @@ WMS stands for "Wifi Managed Service", which is a special wifi internet service 
      :global gmc  [/interface wireless get $int mac-address];   
      :global vrab "ipc=$gip&gw_id=$gwp&mac=$gmc&redirect=$guxx&wlan=$mdlan";
      :global url "$gurl/authnew/login/check_login.php\?$vrab";
-     :global post "username=$username@spin2&password=$password";
+     :global post "usuario=$usuario@spin2&password=$senha";
    
      :if ($type = "WMS") do={
-      :set username "userWMSmu"
-      :set password "passWMSmu"
+      :set usuario "userWMSmu"
+      :set senha "passWMSmu"
       :set url "$gurl/wms/auth/authnew/autologin/quarantine.php\?$vrab"
-      :set post "username_=$username&username=$username.TrL1@wmslite.123456789.000&password=$password"
+      :set post "usuario_=$usuario&usuario=$usuario.TrL1@wmslite.123456789.000&password=$senha"
      };
 	
      log warning ("Internet Mati Memulai Koneksi Ulang | $gip | $gmc | $type | $currentQueue"); 	

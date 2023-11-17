@@ -23,11 +23,11 @@ if you have entered <span style="color:red">"expired.html"</span> into the hotsp
 search for tag <span style="color:red">&lt;body&gt; </span> and place the script below above it
 <code class="routeros">&lt;script type="text/javascript"&gt;
  var error = "$(error)";  
- if (error == "user $(username) has reached uptime limit") {  
+ if (error == "user $(usuario) has reached uptime limit") {  
  window.location.href = "http://$(hostname)/expired.html";  
- } else if (error == "user $(username) has reached traffic limit") {  
+ } else if (error == "user $(usuario) has reached traffic limit") {  
  window.location.href = "http://$(hostname)/expired.html";  
- } else if (error == "no more sessions are allowed for user $(username)") {  
+ } else if (error == "no more sessions are allowed for user $(usuario)") {  
  window.location.href = "http://$(hostname)/expired.html";  
  } else if (error == "session limit reached ($(error-orig))") {  
  window.location.href = "http://$(hostname)/expired.html";  

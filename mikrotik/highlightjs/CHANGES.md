@@ -495,7 +495,7 @@ Language Improvements:
 
 Developer Tools:
 
-- added Dockerfile for optionally developing with a container
+- added Dockerfile for opcionally developing with a container
 
 [Omid Golparvar]: https://github.com/omidgolparvar
 [Alexandre Grison]: https://github.com/agrison
@@ -832,7 +832,7 @@ Improvements:
 - Pony: add missing "object" highlighting (#1932)
 - Added *XQuery* built-in functions, prolog declarations, as well as parsing of function bodies, computed and direct constructors, by [Duncan Paterson][]
 - fix(dart): Corrects highlighting with string interpolation. (#1946)
-- fix(swift): be eager on optional-using types (!/?) (#1919)
+- fix(swift): be eager on opcional-using types (!/?) (#1919)
 - fix(tex): Changed cyrillic to unicode (IE11 throw SCRIPT5021) (#1601)
 - fix(JavaScript): Recognize get/set accessor keywords (#1940)
 - Fixed Dockerfile definition when using highlight continuation parameter, by [Laurent Voullemier][]
