@@ -1,4 +1,4 @@
 User-agent: *
 allow: /
 
-Sitemap: https://buananetpbun.github.io/mikrotik/sitemap.xml
+Sitemap: https://Linket.com.br/mikrotik/sitemap.xml
